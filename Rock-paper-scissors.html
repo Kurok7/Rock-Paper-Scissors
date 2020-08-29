@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Rock-Paper-Scissors</title>
+</head>
+<body>
+</body>
+<script>
+const gameChoices = ["rock", "paper", "scissors"]; //the choices for the game.
+    
+function computerPlay () { //allows the computer to randomly select from gameChoices.
+    const computerSelection = gameChoices[Math.floor(Math.random() * gameChoices.length)]; //code for picking a random value from the array.
+    return computerSelection;
+}
+
+function playerPlay() { //allows the player to choose from gameChoices.
+    while (true) {
+      const playerSelection = prompt('Enter rock, paper or scissors.') //|| "".toLowerCase();
+      if (gameChoices.includes(playerSelection)) { //will always show unless player inputs from gameChoices.
+          return playerSelection;
+      }
+    }
+}
+
+function playRound () { //grabs player and computer selectons
+    const computerSelection = computerPlay();
+    const playerSelection = playerPlay();
+    console.log(`The computer has chosen ${computerSelection}`)
+    let playerWin = false;
+    const tieMsg = `It's a tie! Try again!`;
+    const winMsg = `You win - ${playerSelection} beats ${computerSelection}!`;
+    const loseMsg = `You lose - ${computerSelection} beats ${playerSelection}!`;
+    if (playerSelection === computerSelection) { //checks for tie.
+        console.log(tieMsg);
+        return 'tie';
+    }
+    if (playerSelection === 'rock' && computerSelection != 'paper' && computerSelection != 'rock') {
+        console.log(winMsg);
+        playerWin = true;
+        return playerWin; //checks for a winner and declares a winner or loser.
+    }
+    if (playerSelection === 'paper' && computerSelection != 'scissors' && computerSelection != 'paper') {
+        console.log(winMsg);
+        playerWin = true;
+        return playerWin;
+    }
+    if (playerSelection === 'scissors' && computerSelection != 'rock' && computerSelection != 'scissors') {
+        console.log(winMsg);
+        playerWin = true;
+        return playerWin;
+    }
+    else {
+        console.log(loseMsg);
+        return playerWin;
+    }
+}   
+
+
+
+function game() {
+    let playerWins = 0;
+    let computerWins = 0;
+
+    while (playerWins != 5 && computerWins != 5) { //play until someone wins 5 times
+        do {playerWin = playRound();} while (playerWin === 'tie');
+        if (playerWin) playerWins += 1;
+        else if (playerWin === false) computerWins +=1;
+        console.log(`Player: ${playerWins} points. Computer: ${computerWins} points.`);
+    }
+    if (playerWins === 5) {
+        console.log(`You won the game! ${playerWins} to ${computerWins}!`);
+    } else {
+        console.log(`You won the game! ${computerWins} to ${playerWins}!`)
+    }
+}
+
+const computerSelection = computerPlay();
+</script>
+</html>
