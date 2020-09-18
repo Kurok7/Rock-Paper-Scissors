@@ -1,0 +1,55 @@
+:root {
+    background-color: silver;
+}
+
+h1 {
+    display: flex;
+    justify-content: center;
+    color: blue;
+}
+
+p {
+    text-align: center;
+}
+
+.rock:hover, .paper:hover, .scissors:hover {
+    background-color: green;
+}
+
+#scores {
+    display: flex;
+    justify-content: center;
+    gap: 60em;
+    /* border: 5px ridge yellow; */
+    /* padding: 20px;
+    margin-top: 10em;
+    margin-left: 35em; */
+    /* width: 600px;
+    height: 300px; */
+}
+
+.players-score {
+    border: 5px inset red;
+    padding: 10px 10px 50px;
+    background-color: lightsteelblue;
+}
+
+.computers-score {
+    border: 5px solid blue;
+    padding: 10px 10px 50px;
+    background-color: lightsteelblue;
+}
+
+#buttons {
+    display: flex;
+    justify-content: center;
+    padding: 1.5rem;
+    gap: 15rem;
+}
+
+.rock, .paper, .scissors {
+    border: 5px solid black;
+    color: blue;
+    background-color: azure;
+    padding: 12px;
+}

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>rock-paper-Scissors</title>
+    <link rel="stylesheet" type="text/css" href="Rock, paper, scissors.css">
+</head>
+<body>
+    <h1></h1>
+    <p>I'm still working on stylizing my game. It works in the console.</p>
+    <div id="scores"></div>
+    <div id="buttons">
+        <button class="rock">Rock</button>
+        <button class="paper">Paper</button>
+        <button class="scissors">Scissors</button>
+    </div>
+</body>
+<script>
+const container = document.getElementById("buttons");
+const points = document.getElementById("scores");
+const header = document.querySelector("h1");
+header.textContent = "This is a game of rock, paper, scissors!";
+
+header.textContent = "It's a simple game of Rock, Paper, Scissors. Good luck to you!";
+
+const playerScoreboard = document.createElement("div");
+points.appendChild(playerScoreboard).className = "players-score";
+playerScoreboard.textContent = "Player has:    ";
+
+const compScoreboard = document.createElement("div");
+points.appendChild(compScoreboard).className = "computers-score";
+compScoreboard.textContent = "Computer has:    ";
+
+
+let playerScore = 0;
+let computerScore = 0;
+let rounds = 0;
+
+let rock = document.querySelector(".rock");
+let paper = document.querySelector(".paper");
+let scissors = document.querySelector(".scissors");
+
+//div.style.cssText = "color: blue; background: white";          
+// adds several style rules
+
+//allows the computerSelection to randomly select from gameChoices.
+function computerPlay() {
+    const gameChoices = ["rock", "paper", "scissors"];
+    const computerChoice = gameChoices[Math.floor(Math.random() * gameChoices.length)]; //code for picking a random value from the array.
+    return computerChoice;
+}
+
+//Player's choices when clicked
+rock.addEventListener('click', function() {
+    let a = "rock";
+    let b = computerPlay();
+    let c = playRound(a,b);
+    //game(c);
+})
+
+paper.addEventListener('click', function() {
+    let a = "paper";
+    let b = computerPlay();
+    let c = playRound(a,b);
+})
+
+scissors.addEventListener('click', function() {
+    let a = "scissors";
+    let b = computerPlay();
+    let c = playRound(a,b);
+})
+
+ //Plays one round. checks for winner, loser or tie and states the results.
+function playRound(playerSelection, computerSelection) {
+    computerSelection = computerPlay();
+    console.log(`Player chooses ${playerSelection} while the computer has chosen ${computerSelection}`);
+    if ((playerSelection === 'scissors' && computerSelection === 'paper') || (playerSelection === 'rock' && computerSelection === 'scissors') || (playerSelection === 'paper' && computerSelection === 'rock')){
+        console.log("Player Wins.");
+        playerPoints();
+    } else if ((computerSelection === 'scissors' && playerSelection === 'paper') || (computerSelection === 'rock' && playerSelection === 'scissors') || (computerSelection === 'paper' && playerSelection === 'rock')){
+        console.log("Computer Wins.");
+        computerPoints();
+    } else {
+        console.log("It's a tie.");
+    }
+}
+
+function playerPoints() {
+    console.log(`Player has ${playerScore += 1} points!`);
+    // updateScore();
+}
+
+function computerPoints() {
+    console.log(`Computer has ${computerScore += 1} points!`);
+}
+
+// function updateScore() {
+//     playerScore
+// }
+
+</script>
+</html>
